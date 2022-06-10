@@ -10,16 +10,16 @@ const endoSchema = new Schema({
     type: Number,
   },
   availableTime: { from: { type: Number }, to: { type: Number } },
-  endoDays: {
+  testDays: {
     type: String,
     default: "All days",
   },
   selectedDays: [],
-  endoPeriod: {
+  testPeriod: {
     type: Number,
     required: true,
   },
-  endoPreparation: [], //array of string values
+  testPreparation: [], //array of string values
 });
 
 module.exports = mongoose.model("endoscopy", endoSchema);

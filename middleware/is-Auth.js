@@ -40,13 +40,14 @@ exports.isRoot = async (req, res, next) => {
   if (!decodedToken) {
     const error = new Error("Authentication faild!");
     error.statusCode = 500;
-    throw error;
+    next(error);
   }
   const root = await User.findById(decodedToken.rootId);
-  if (!root || root.role !== "root") {
+  if (root && root.role === "root") {
+    next();
+  } else {
     const error = new Error("Invalid credentials");
     error.statusCode = 500;
     throw error;
   }
-  next();
 };

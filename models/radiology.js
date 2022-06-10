@@ -10,16 +10,16 @@ const radiologySchema = new Schema({
     type: Number,
   },
   availableTime: { from: { type: Number }, to: { type: Number } },
-  scanDays: {
+  testDays: {
     type: String,
     default: "All days",
   },
   selectedDays: [],
-  scanPeriod: {
+  testPeriod: {
     type: Number,
     required: true,
   },
-  scanPreparation: [], //array of string values
+  testPreparation: [], //array of string values
 });
 
 module.exports = mongoose.model("radiology", radiologySchema);

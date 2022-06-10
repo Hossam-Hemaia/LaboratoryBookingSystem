@@ -9,6 +9,7 @@ const dotenv = require("dotenv");
 
 const authRouter = require("./routes/auth");
 const branchRouter = require("./routes/branch");
+const rootRouter = require("./routes/root");
 
 const app = express();
 dotenv.config();
@@ -42,12 +43,13 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use(process.env.api, authRouter);
 app.use(process.env.api, branchRouter);
+app.use(process.env.api, rootRouter);
 
 app.use((error, req, res, next) => {
   console.log(error);
   const status = error.statusCode || 500;
   const message = error.message;
-  res.status(status).json({ message });
+  res.status(status).json({ success: false, message: message });
 });
 
 mongoose

@@ -10,16 +10,16 @@ const dentalSchema = new Schema({
     type: Number,
   },
   availableTime: { from: { type: Number }, to: { type: Number } },
-  dentalDays: {
+  testDays: {
     type: String,
     default: "All days",
   },
   selectedDays: [],
-  dentalPeriod: {
+  testPeriod: {
     type: Number,
     required: true,
   },
-  dentalPreparation: [], //array of string values
+  testPreparation: [], //array of string values
 });
 
 module.exports = mongoose.model("dental", dentalSchema);

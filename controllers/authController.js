@@ -53,7 +53,7 @@ exports.postClientLogin = async (req, res, next) => {
         clientId: client._id.toString(),
       },
       process.env.SECRET,
-      { expiresIn: "3h" }
+      { expiresIn: "1day" }
     );
     res.status(200).json({ success: true, token: token, client: client });
   } catch (err) {

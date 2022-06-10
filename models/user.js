@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
+  employeeName: {
+    type: String,
+    required: true,
+  },
   username: {
     type: String,
     required: true,
@@ -13,6 +17,11 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true,
+    default: "xxxxxx",
+  },
+  status: {
+    type: String,
+    default: "Active",
   },
   branchId: {
     type: Schema.Types.ObjectId,
